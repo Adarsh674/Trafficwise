@@ -4,13 +4,14 @@ import React from 'react';
 import {Card, CardContent, CardDescription, CardHeader, CardTitle} from '@/components/ui/card';
 import {generateAlgorithmSummary} from '@/ai/flows/generate-algorithm-summary';
 import {
-  Area,
+  BarChart,
+  Bar,
   CartesianGrid,
-  ComposedChart,
   Legend,
   Tooltip,
   XAxis,
   YAxis,
+  ResponsiveContainer,
 } from 'recharts';
 import {Badge} from '@/components/ui/badge';
 
@@ -24,6 +25,12 @@ interface SystemData {
   name: string;
   [key: string]: number | string;
 }
+
+const algorithmDescriptions = {
+  DQN: `DQN (Deep Q-Network) Single-agent RL approach. Works well in discrete action spaces. Best for single isolated intersection control.`,
+  PPO: `PPO (Proximal Policy Optimization) Policy-gradient method. Works for continuous or discrete action spaces. Best for larger networks with dynamic traffic.`,
+  MARL: `MARL (Multi-Agent Reinforcement Learning) Deals with multiple agents. Best for city-wide traffic control with many intersections working together.`,
+};
 
 export function AlgorithmSummary({
   algorithm1 = 'DQN',
@@ -84,19 +91,26 @@ export function AlgorithmSummary({
             )}
 
             {chartData.length > 0 ? (
-              <ComposedChart width={800} height={300} data={chartData}>
-                <CartesianGrid stroke="#f5f5f5" />
-                <XAxis dataKey="name" />
-                <YAxis />
-                <Tooltip />
-                <Legend />
-                {algorithm1 && <Area type="monotone" dataKey={algorithm1} fill="#8884d8" stroke="#8884d8" />}
-                {algorithm2 && <Area type="monotone" dataKey={algorithm2} fill="#82ca9d" stroke="#82ca9d" />}
-                {algorithm3 && <Area type="monotone" dataKey={algorithm3} fill="#ffc658" stroke="#ffc658" />}
-              </ComposedChart>
+              <ResponsiveContainer width="100%" height={300}>
+                <BarChart data={chartData} margin={{top: 20, right: 30, left: 20, bottom: 5}}>
+                  <CartesianGrid strokeDasharray="3 3" />
+                  <XAxis dataKey="name" />
+                  <YAxis />
+                  <Tooltip />
+                  <Legend />
+                  {algorithm1 && <Bar dataKey={algorithm1} fill="#8884d8" name={algorithm1} />}
+                  {algorithm2 && <Bar dataKey={algorithm2} fill="#82ca9d" name={algorithm2} />}
+                  {algorithm3 && <Bar dataKey={algorithm3} fill="#ffc658" name={algorithm3} />}
+                </BarChart>
+              </ResponsiveContainer>
             ) : (
               <p>No chart data available.</p>
             )}
+             <div className="flex justify-around mt-4">
+              <Badge variant="secondary">{algorithm1}</Badge>
+              <Badge variant="secondary">{algorithm2}</Badge>
+              <Badge variant="secondary">{algorithm3}</Badge>
+            </div>
           </>
         )}
       </CardContent>
