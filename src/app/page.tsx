@@ -67,10 +67,13 @@ export default function Home() {
               <Download className="mr-2 h-4 w-4" /> Download Report
             </Button>
           </div>
-          <AlgorithmComparison />
+          <div className="flex flex-col gap-4">
+            <AlgorithmComparison />
+          </div>
           <AlgorithmSummary />
         </div>
       </SidebarInset>
     </SidebarProvider>
   );
 }
+

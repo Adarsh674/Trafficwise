@@ -21,40 +21,43 @@ interface SystemData {
   MARL: number;
 }
 
+// Data optimized for DQN (Small System)
 const smallSystemData: SystemData[] = [
-  {name: '00:00', DQN: 4000, PPO: 2400, MARL: 2400},
-  {name: '03:00', DQN: 3000, PPO: 1398, MARL: 2210},
-  {name: '06:00', DQN: 2000, PPO: 9800, MARL: 2290},
-  {name: '09:00', DQN: 2780, PPO: 3908, MARL: 2000},
-  {name: '12:00', DQN: 1890, PPO: 4800, MARL: 2181},
-  {name: '15:00', DQN: 2390, PPO: 3800, MARL: 2500},
-  {name: '18:00', DQN: 3490, PPO: 4300, MARL: 2100},
-  {name: '21:00', DQN: 3490, PPO: 4300, MARL: 2100},
-  {name: '24:00', DQN: 3490, PPO: 4300, MARL: 2100},
+  {name: '00:00', DQN: 4000, PPO: 1000, MARL: 1000},
+  {name: '03:00', DQN: 3000, PPO: 1100, MARL: 1100},
+  {name: '06:00', DQN: 2000, PPO: 1200, MARL: 1200},
+  {name: '09:00', DQN: 2780, PPO: 1300, MARL: 1300},
+  {name: '12:00', DQN: 1890, PPO: 1400, MARL: 1400},
+  {name: '15:00', DQN: 2390, PPO: 1500, MARL: 1500},
+  {name: '18:00', DQN: 3490, PPO: 1600, MARL: 1600},
+  {name: '21:00', DQN: 3490, PPO: 1700, MARL: 1700},
+  {name: '24:00', DQN: 3490, PPO: 1800, MARL: 1800},
 ];
 
+// Data optimized for PPO (Medium System)
 const mediumSystemData: SystemData[] = [
-  {name: '00:00', DQN: 2400, PPO: 4000, MARL: 2400},
-  {name: '03:00', DQN: 1398, PPO: 3000, MARL: 2210},
-  {name: '06:00', DQN: 9800, PPO: 2000, MARL: 2290},
-  {name: '09:00', DQN: 3908, PPO: 2780, MARL: 2000},
-  {name: '12:00', DQN: 4800, PPO: 1890, MARL: 2181},
-  {name: '15:00', DQN: 3800, PPO: 2390, MARL: 2500},
-  {name: '18:00', DQN: 4300, PPO: 3490, MARL: 2100},
-  {name: '21:00', DQN: 4300, PPO: 3490, MARL: 2100},
-  {name: '24:00', DQN: 4300, PPO: 3490, MARL: 2100},
+  {name: '00:00', DQN: 1000, PPO: 4000, MARL: 1000},
+  {name: '03:00', DQN: 1100, PPO: 3000, MARL: 1100},
+  {name: '06:00', DQN: 1200, PPO: 2000, MARL: 1200},
+  {name: '09:00', DQN: 1300, PPO: 2780, MARL: 1300},
+  {name: '12:00', DQN: 1400, PPO: 1890, MARL: 1400},
+  {name: '15:00', DQN: 1500, PPO: 2390, MARL: 1500},
+  {name: '18:00', DQN: 1600, PPO: 3490, MARL: 1600},
+  {name: '21:00', DQN: 1700, PPO: 3490, MARL: 1700},
+  {name: '24:00', DQN: 1800, PPO: 3490, MARL: 1800},
 ];
 
+// Data optimized for MARL (Large System)
 const largeSystemData: SystemData[] = [
-  {name: '00:00', DQN: 2400, PPO: 2400, MARL: 4000},
-  {name: '03:00', DQN: 2210, PPO: 1398, MARL: 3000},
-  {name: '06:00', DQN: 2290, PPO: 9800, MARL: 2000},
-  {name: '09:00', DQN: 2000, PPO: 3908, MARL: 2780},
-  {name: '12:00', DQN: 2181, PPO: 4800, MARL: 1890},
-  {name: '15:00', DQN: 2500, PPO: 3800, MARL: 2390},
-  {name: '18:00', DQN: 2100, PPO: 4300, MARL: 3490},
-  {name: '21:00', DQN: 2100, PPO: 4300, MARL: 3490},
-  {name: '24:00', DQN: 2100, PPO: 4300, MARL: 3490},
+  {name: '00:00', DQN: 1000, PPO: 1000, MARL: 4000},
+  {name: '03:00', DQN: 1100, PPO: 1100, MARL: 3000},
+  {name: '06:00', DQN: 1200, PPO: 1200, MARL: 2000},
+  {name: '09:00', DQN: 1300, PPO: 1300, MARL: 2780},
+  {name: '12:00', DQN: 1400, PPO: 1400, MARL: 1890},
+  {name: '15:00', DQN: 1500, PPO: 1500, MARL: 2390},
+  {name: '18:00', DQN: 1600, PPO: 1600, MARL: 3490},
+  {name: '21:00', DQN: 1700, PPO: 1700, MARL: 3490},
+  {name: '24:00', DQN: 1800, PPO: 1800, MARL: 3490},
 ];
 
 // Function to generate a consistent clipPathId
@@ -102,7 +105,7 @@ function AlgorithmComparisonChart({systemSize, data, title, description}: Algori
 
 export function AlgorithmComparison() {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+    <div className="flex flex-col gap-4">
       <AlgorithmComparisonChart
         systemSize="small"
         data={smallSystemData}
