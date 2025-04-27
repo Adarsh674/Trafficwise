@@ -6,17 +6,15 @@ import {
   SidebarContent,
   SidebarFooter,
   SidebarHeader,
-  SidebarMenu,
+  SidebarSeparator,
   SidebarMenuButton,
   SidebarMenuItem,
   SidebarProvider,
-  SidebarSeparator,
   SidebarTrigger,
   SidebarInset,
 } from '@/components/ui/sidebar';
 import {AlgorithmComparison} from '@/components/algorithm-comparison';
 import {AlgorithmSummary} from '@/components/algorithm-summary';
-import {Card, CardContent, CardDescription, CardHeader, CardTitle} from '@/components/ui/card';
 import {Button} from '@/components/ui/button';
 import {Download, Plus} from 'lucide-react';
 
@@ -31,13 +29,6 @@ export default function Home() {
           </p>
         </SidebarHeader>
         <SidebarContent>
-          <SidebarMenu>
-            <SidebarMenuItem>
-              <SidebarMenuButton isActive>
-                Algorithm Comparison
-              </SidebarMenuButton>
-            </SidebarMenuItem>
-          </SidebarMenu>
         </SidebarContent>
         <SidebarFooter>
           <SidebarSeparator />
@@ -76,4 +67,5 @@ export default function Home() {
     </SidebarProvider>
   );
 }
+
 
