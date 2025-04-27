@@ -3,7 +3,6 @@
 import React from 'react';
 import {
   Area,
-  AreaChart,
   CartesianGrid,
   ComposedChart,
   Legend,
@@ -21,7 +20,7 @@ interface SystemData {
   MARL: number;
 }
 
-// Data optimized for DQN (Small System)
+// Data for Small System
 const smallSystemData: SystemData[] = [
   {name: '00:00', DQN: 4000, PPO: 1000, MARL: 1000},
   {name: '03:00', DQN: 3000, PPO: 1100, MARL: 1100},
@@ -34,7 +33,7 @@ const smallSystemData: SystemData[] = [
   {name: '24:00', DQN: 3490, PPO: 1800, MARL: 1800},
 ];
 
-// Data optimized for PPO (Medium System)
+// Data for Medium System
 const mediumSystemData: SystemData[] = [
   {name: '00:00', DQN: 1000, PPO: 4000, MARL: 1000},
   {name: '03:00', DQN: 1100, PPO: 3000, MARL: 1100},
@@ -47,7 +46,7 @@ const mediumSystemData: SystemData[] = [
   {name: '24:00', DQN: 1800, PPO: 3490, MARL: 1800},
 ];
 
-// Data optimized for MARL (Large System)
+// Data for Large System
 const largeSystemData: SystemData[] = [
   {name: '00:00', DQN: 1000, PPO: 1000, MARL: 4000},
   {name: '03:00', DQN: 1100, PPO: 1100, MARL: 3000},
@@ -63,14 +62,13 @@ const largeSystemData: SystemData[] = [
 // Function to generate a consistent clipPathId
 const generateClipPathId = (seed: number) => `recharts${seed}-clip`;
 
-interface AlgorithmComparisonProps {
-  systemSize: 'small' | 'medium' | 'large';
+interface AlgorithmComparisonChartProps {
   data: SystemData[];
   title: string;
   description: string;
 }
 
-function AlgorithmComparisonChart({systemSize, data, title, description}: AlgorithmComparisonProps) {
+function AlgorithmComparisonChart({data, title, description}: AlgorithmComparisonChartProps) {
   // Use a fixed seed for Math.random to ensure consistent clipPathId
   const seed = 2;
 
@@ -107,19 +105,16 @@ export function AlgorithmComparison() {
   return (
     <div className="flex flex-col gap-4">
       <AlgorithmComparisonChart
-        systemSize="small"
         data={smallSystemData}
         title="Small"
         description="Single isolated intersection control."
       />
       <AlgorithmComparisonChart
-        systemSize="medium"
         data={mediumSystemData}
         title="Medium"
         description="Larger networks of intersections, better adaptability to dynamic traffic."
       />
       <AlgorithmComparisonChart
-        systemSize="large"
         data={largeSystemData}
         title="Large"
         description="City-wide traffic control with many intersections working together."
