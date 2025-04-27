@@ -7,7 +7,6 @@ import {
   CartesianGrid,
   ComposedChart,
   Legend,
-  Line,
   Scatter,
   Tooltip,
   XAxis,
@@ -73,7 +72,13 @@ const data = [
   },
 ];
 
+// Function to generate a consistent clipPathId
+const generateClipPathId = (seed: number) => `recharts${seed}-clip`;
+
 export function AlgorithmComparison() {
+  // Use a fixed seed for Math.random to ensure consistent clipPathId
+  const seed = 2;
+
   return (
     <Card className="col-span-2">
       <CardHeader>
@@ -84,7 +89,7 @@ export function AlgorithmComparison() {
         </CardDescription>
       </CardHeader>
       <CardContent>
-        <ComposedChart width={800} height={400} data={data}>
+        <ComposedChart width={800} height={400} data={data} clipPathId={generateClipPathId(seed)}>
           <XAxis dataKey="name" />
           <YAxis />
           <Tooltip />
