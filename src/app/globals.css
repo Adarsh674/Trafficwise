@@ -76,6 +76,20 @@ body {
     --sidebar-border: 240 3.7% 15.9%;
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
+
+  /* Custom colors based on the proposal */
+  :root {
+    --background: 220 14% 96%; /* Light gray */
+    --foreground: 220 10% 39%; /* Darker gray */
+    --primary: 180 100% 25%; /* Teal */
+    --primary-foreground: 0 0% 98%;
+    --accent: 39 100% 50%; /* Orange */
+  }
+
+  .dark {
+    --background: 180 13% 15%; /* Dark teal-ish */
+    --foreground: 0 0% 98%;
+  }
 }
 
 @layer base {
@@ -86,3 +100,4 @@ body {
     @apply bg-background text-foreground;
   }
 }
+

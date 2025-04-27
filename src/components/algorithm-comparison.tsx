@@ -75,7 +75,7 @@ function AlgorithmComparisonChart({data, title, description}: AlgorithmCompariso
   return (
     <Card className="col-span-1">
       <CardHeader>
-        <CardTitle>{title} System</CardTitle>
+        <CardTitle>{title}</CardTitle>
         <CardDescription>
           {description}
         </CardDescription>
@@ -106,18 +106,18 @@ export function AlgorithmComparison() {
     <div className="flex flex-col gap-4">
       <AlgorithmComparisonChart
         data={smallSystemData}
-        title="Small"
-        description="Single isolated intersection control."
+        title="Single Intersection - DQN"
+        description="Best for: Single isolated intersection control."
       />
       <AlgorithmComparisonChart
         data={mediumSystemData}
-        title="Medium"
-        description="Larger networks of intersections, better adaptability to dynamic traffic."
+        title="Larger Network - PPO"
+        description="Best for: Larger networks of intersections, better adaptability to dynamic traffic."
       />
       <AlgorithmComparisonChart
         data={largeSystemData}
-        title="Large"
-        description="City-wide traffic control with many intersections working together."
+        title="City-Wide Grid - MARL"
+        description="Best for: City-wide traffic control with many intersections working together."
       />
     </div>
   );
